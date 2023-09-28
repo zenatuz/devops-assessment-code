@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Timezones in the world</title>
+  </head>
+
+  <style type="text/css">
+    tr:nth-of-type(2n) {
+      border: 1px solid black;
+      background-color: rgba(150, 150, 150, 0.5);
+    }
+
+    td {
+      padding: 8px 8px;
+      border: 1px solid black;
+    }
+  </style>
+
+  <body>
+    <table style="margin-left: 20px">
+      <th>
+        <tr>
+          <td><b>City</b></td>
+          <td><b>Timezone</b></td>
+        </tr>
+      </th>
+
+      <!-- For loop logic of jinja template -->
+      {%for i in range(0, len)%}
+
+      <tr>
+        <td>{{City[i]}}</td>
+        <td>{{Timezones[i]}}</td>
+
+        {%endfor%}
+      </tr>
+    </table>
+  </body>
+</html>

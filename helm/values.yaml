@@ -2,7 +2,8 @@ app:
   name: "simple-time-app"
   namespace: "simple-time-app"
   replicas: 1
-  image: "url"
+  image: "192830704033.dkr.ecr.us-east-2.amazonaws.com/simple-time-app:v0.0.01"
+  # image: "zenatuz/simple-time:v0.0.1"
 
 ingress:
   class: "ingress-class-name"

@@ -1,6 +1,6 @@
 module "eks" {
   source        = "../module/eks"
-  registry_name = "devops-assessment"
+  registry_name = "simple-time-app"
   cluster_name  = "devops-assessment"
 }
 

@@ -1,0 +1,9 @@
+app:
+  name: "simple-time-app"
+  namespace: "simple-time-app"
+  replicas: 1
+  image: "url"
+
+ingress:
+  class: "ingress-class-name"
+  url: "url"

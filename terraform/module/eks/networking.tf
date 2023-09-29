@@ -1,6 +1,7 @@
 #vpc
 resource "aws_vpc" "eks" {
-  cidr_block = var.cidr_block
+  cidr_block           = var.cidr_block
+  enable_dns_hostnames = true
 
   tags = {
     managed-by = "terraform"
@@ -43,34 +44,4 @@ resource "aws_route_table_association" "eks" {
 
   subnet_id      = aws_subnet.eks.*.id[count.index]
   route_table_id = aws_route_table.eks.id
-}
-
-
-#security group
-resource "aws_security_group" "eks" {
-  name        = "eks"
-  description = "Cluster communication with worker nodes"
-  vpc_id      = aws_vpc.eks.id
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "eks"
-  }
-}
-
-# security group rule
-resource "aws_security_group_rule" "eks-ingress-workstation-https" {
-  cidr_blocks       = var.subnet_cidrs
-  description       = "Allow workstation to communicate with the cluster API Server"
-  from_port         = 443
-  protocol          = "tcp"
-  security_group_id = aws_security_group.eks.id
-  to_port           = 443
-  type              = "ingress"
 }
